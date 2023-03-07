@@ -31,7 +31,6 @@ body {
     min-width: 100vw;
     height: fit-content;
     min-height: 100vh;
-
     place-content: center;
 }
 
