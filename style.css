@@ -14,17 +14,25 @@
 
 body {
     font-size: 1.6rem;  /* equivale a 16px */
+    font-family: 'Inter';
+}
+
+.grid {
+    display: grid;
 }
 
 #app {
     background-color: #292738;
-    display: grid;
-    grid-template-columns: max-content max-content max-content;
+    grid-template-columns: 29.6rem max-content max-content;
+    grid-template-rows: max-content;
     column-gap: 3.2rem; /* GAP significa o espaçamento */
     row-gap: 5.9rem;
-    width: 100vw;
-    height: 100vh;
-    padding: 11.2rem 12.3rem;
+    width: fit-content;
+    min-width: 100vw;
+    height: fit-content;
+    min-height: 100vh;
+
+    place-content: center;
 }
 
 .box {
@@ -32,8 +40,66 @@ body {
     background: #363447;
     box-shadow: 0.3rem 0.4rem 2.6rem rgba(0, 0, 0, 0.25);
     border-radius: 1.6rem;
+    color: white;
+    line-height: 160%;
 }
 
 .box:nth-child(4) {     /* Caixa número 4 */
     grid-column: 1/4;
+}
+
+.top {
+    font-weight: 600;
+    font-size: 2.4rem;
+    text-align: center;
+}
+
+.bottom {
+    display: flex;
+    gap: 2rem;
+    justify-content: center;    /* No display FLEX se usa essa propriedade pois só tem 1 linha para trabalhar */
+    margin-top: auto;   /* Funcionou deixar Margin Top AUTO pois o elemento pai é um FLEX ou GRID */
+    font-weight: 500;
+    font-size: 1.4rem;
+}
+
+.bottom .item {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.bottom .item span:nth-child(1) {
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+}
+
+.bottom .item span {
+    --bg-color: #4A4556;
+}
+
+.bottom .item span:nth-child(1)::before {
+    content: "";
+    width: 1.5rem;
+    height: 1.5rem;
+    display: block;
+    background: var(--bg-color);
+    border-radius: 50%;
+}
+
+.nps {
+    gap: 3.2rem;
+}
+
+.nps .middle {
+    height: 19.7rem;
+    place-content: center;  /* Coloca os conteudos no centro */
+    justify-items: center;  /* Alinha os itens no centro */     /* No GRID se usa essa propriedade pois tem linhas e colunas para trabalhar */
+    gap: 1.6rem;
+    color: #81FBB8;
+}
+
+.nps .bottom {
+    gap: 1rem;
 }
