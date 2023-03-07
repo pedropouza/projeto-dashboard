@@ -69,14 +69,14 @@ body {
     gap: 1rem;
 }
 
+.bottom .item span {
+    --bg-color: #4A4556;
+}
+
 .bottom .item span:nth-child(1) {
     display: flex;
     align-items: center;
     gap: 0.4rem;
-}
-
-.bottom .item span {
-    --bg-color: #4A4556;
 }
 
 .bottom .item span:nth-child(1)::before {
