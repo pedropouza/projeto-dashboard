@@ -102,3 +102,32 @@ body {
 .nps .bottom {
     gap: 1rem;
 }
+
+.middle {
+    display: grid;
+    place-content: center;  /* Para centralizar o circulo */
+}
+
+svg {
+    --percentage: 0;
+    width: 19.7rem;
+    height: 19.7rem;
+    transform: rotate(-90deg);
+}
+
+svg circle {
+    /* Esses 618 é o calculo da Circunferência */
+    /* dasharray e dashoffset é basicamente como se ele completasse o redondo, e ao mesmo tempo desfizesse ele */
+    stroke-dasharray: 619; 
+    stroke-dashoffset: 619; 
+    stroke-width: 35;   /* Largura da borda */
+    fill: none;     /* Preenchimento interno vazio (por padrão é preto) */
+}
+
+svg circle:nth-child(1) {
+    stroke-dashoffset: 0;   /* 0 faz aparecer, no caso, aparece somente o cinza, que sempre vai estar aparente */
+}
+
+svg circle:nth-child(2) {
+    stroke-dashoffset: calc(619 - (619 * var(--percentage))/100);    /* Calculo para saber a porcentagem que irá aparecer (o que está entre parenteses é onde escolhe a porcentagem) */
+}
