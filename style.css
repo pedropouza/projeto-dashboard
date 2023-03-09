@@ -15,6 +15,7 @@
 body {
     font-size: 1.6rem;  /* equivale a 16px */
     font-family: 'Inter';
+    background-color: #292738;
 }
 
 .grid {
@@ -26,16 +27,14 @@ body {
 }
 
 #app {
-    background-color: #292738;
-    grid-template-columns: 29.6rem max-content max-content;
-    grid-template-rows: max-content;
     column-gap: 3.2rem; /* GAP significa o espaçamento */
     row-gap: 5.9rem;
     width: fit-content;
-    min-width: 100vw;
     height: fit-content;
     min-height: 100vh;
     place-content: center;
+    padding: 3.2rem;
+    margin: auto;
 }
 
 .box {
@@ -45,10 +44,7 @@ body {
     border-radius: 1.6rem;
     color: white;
     line-height: 160%;
-}
-
-.box:nth-child(4) {     /* Caixa número 4 */
-    grid-column: 1/4;
+    gap: 3.2rem;
 }
 
 .top {
@@ -163,11 +159,13 @@ svg circle:nth-child(2) {
 
 .weekly-sell .wrapper {
     display: flex;
+    flex-direction: column; /* para ficar em coluna (quando o navegador for menor que 1200px, pois ja tem o @media aplicado) */
     gap: 3.2rem;
 }
 
 .weekly-sell .left {
     gap: 3.2rem;
+    grid-auto-flow: column; /* para ficar em coluna (quando o navegador for menor que 1200px, pois ja tem o @media aplicado) */
 }
 
 .weekly-sell .left, .weekly-sell .right {
@@ -211,7 +209,7 @@ svg circle:nth-child(2) {
 
 .bars {
     display: flex;
-    gap: 5.9rem;    /* Espaço entre os elementos (entre as barras) */
+    gap: calc(3vw + 1rem);    /* Espaço entre os elementos (entre as barras) */
     align-items: flex-end;
     position: relative;
 }
@@ -252,5 +250,28 @@ svg circle:nth-child(2) {
 @keyframes up {
     0% {
         height: 0;
+    }
+}
+
+@media (min-width: 1200px) {
+    #app {
+        grid-template-columns: 29.6rem max-content max-content;
+        grid-template-rows: max-content;
+    }
+    
+    .box:nth-child(4) {     /* Caixa número 4 */
+        grid-column: 1/4;
+    }
+    
+    .weekly-sell .wrapper {
+        flex-direction: row; /* para ficar em linha (quando o navegador for maior que 1200px */
+    }
+    
+    .weekly-sell .left {
+        grid-auto-flow: initial; /* para ficar em coluna (quando o navegador for menor que 1200px, pois ja tem o @media aplicado) */
+    }
+
+    .bars {
+        gap: 5.9rem;
     }
 }
