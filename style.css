@@ -21,6 +21,10 @@ body {
     display: grid;
 }
 
+.text-center {
+    text-align: center;
+}
+
 #app {
     background-color: #292738;
     grid-template-columns: 29.6rem max-content max-content;
@@ -50,7 +54,24 @@ body {
 .top {
     font-weight: 600;
     font-size: 2.4rem;
+}
+
+.middle {
+    display: grid;
+    place-content: center;  /* Para centralizar o circulo */
+    position: relative; /* Para o conteudo dentro poder ser absoluto */
+}
+
+.middle .content {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);   /* Usando somente Top e Left, o conteudo que ficou centralizado foi a parte superior esquerda, e não o centro do conteudo. Usando o translate para subir e levar um pouco para o lado, fazendo o conteudo ficar centralizado */
     text-align: center;
+}
+
+.content h3 {
+    font-size: 3.4rem;
 }
 
 .bottom {
@@ -103,11 +124,6 @@ body {
     gap: 1rem;
 }
 
-.middle {
-    display: grid;
-    place-content: center;  /* Para centralizar o circulo */
-}
-
 svg {
     --percentage: 0;
     width: 19.7rem;
@@ -130,4 +146,59 @@ svg circle:nth-child(1) {
 
 svg circle:nth-child(2) {
     stroke-dashoffset: calc(619 - (619 * var(--percentage))/100);    /* Calculo para saber a porcentagem que irá aparecer (o que está entre parenteses é onde escolhe a porcentagem) */
+    stroke-linecap: round;  /* Deixa arredondado o stroke */
+    animation: progress 1s; /* Usa a animação de "progresso" dando inicio do 0 até o desejado */
+}
+
+@keyframes progress {
+    0% {
+        stroke-dasharray: 619; 
+        stroke-dashoffset: 619; 
+    }
+}
+
+.weekly-sell {
+    gap: 3.2rem;
+}
+
+.weekly-sell .wrapper {
+    display: flex;
+    gap: 3.2rem;
+}
+
+.weekly-sell .left {
+    gap: 3.2rem;
+}
+
+.left .grid {
+    gap: .8rem;
+    font-weight: 500;
+    font-size: 2.4rem;
+}
+
+.left .grid span {
+    font-weight: 500;
+    font-size: 1.4rem;
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+}
+
+.left .grid span::before {
+    content: "";
+    width: 15px;
+    height: 15px;
+    display: block;
+    clip-path: polygon(50% 0%, 0% 80%, 100% 80%);
+}
+
+.left .most-sell span::before {
+    background: linear-gradient(180deg, #81FBB8 0%, #28C76F 100%);
+    margin-top: 0.2rem;
+}
+
+.left .less-sell span::before {
+    background: linear-gradient(180deg, #EA5455 0%, #FEB692 100%);
+    transform: matrix(1, 0, 0, -1, 0, 0);
+    margin-bottom: 0.3rem;
 }

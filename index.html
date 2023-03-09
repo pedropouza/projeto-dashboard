@@ -13,7 +13,7 @@
 <body>
     <main id="app" class="grid">    <!-- Essa class Grid vai ser responsavel por adicionar ou remover o GRID da página -->
         <div class="box nps grid">
-            <div class="top">NPS Geral</div>
+            <div class="top text-center">NPS Geral</div>
             <div class="middle grid">
                 <img src="./assets/smile.svg" alt="bolinha verde sorrindo">
                 Excelente
@@ -24,7 +24,7 @@
             </div>
         </div>
         <div class="box sell grid">
-            <div class="top">Vendas fechadas</div>
+            <div class="top text-center">Vendas fechadas</div>
             <div class="middle">
                 <svg viewBox="0 0 232 232" style="--percentage: 70;">
                     <circle r="98.5" cx="50%" cy="50%" opacity="0.1" stroke="#D9D9D9"/>
@@ -36,6 +36,10 @@
                         </linearGradient>
                     </defs>
                 </svg>
+                <div class="content">
+                    <h3>70%</h3>
+                    <p>Alcançada</p>
+                </div>
             </div>
             <div class="bottom">
                 <div class="item">
@@ -49,8 +53,23 @@
             </div>
         </div>
         <div class="box target grid">
-            <div class="top">Meta mensal</div>
-            <div class="middle"></div>
+            <div class="top text-center">Meta mensal</div>
+            <div class="middle">
+                <svg viewBox="0 0 232 232" style="--percentage: 90;">
+                    <circle r="98.5" cx="50%" cy="50%" opacity="0.1" stroke="#D9D9D9"/>
+                    <circle r="98.5" cx="50%" cy="50%" stroke="url(#paint0_linear_201_104)"/>
+                    <defs>
+                        <linearGradient id="paint0_linear_201_104" x1="1.97421e-07" y1="82" x2="154" y2="178" gradientUnits="userSpaceOnUse">
+                            <stop stop-color="#DF9780"/>
+                            <stop offset="1" stop-color="#A66DE9"/>
+                        </linearGradient>
+                    </defs>
+                </svg>
+                <div class="content">
+                    <h3>90%</h3>
+                    <p>Alcançada</p>
+                </div>
+            </div>
             <div class="bottom">
                 <div class="item">
                     <span>Esperado</span>
@@ -62,7 +81,22 @@
                 </div>
             </div>
         </div>
-        <div class="box"></div>
+        <div class="box weekly-sell grid">  <!-- Transformou em GRID para poder usar a propriedade GAP em CSS -->
+            <div class="top">Vendas por dia da semana</div>
+            <div class="wrapper">
+                <div class="left grid">
+                    <div class="most-sell grid">
+                        <span>Dia com mais vendas</span>
+                        Quarta-Feira
+                    </div>
+                    <div class="less-sell grid">
+                        <span>Dia com menos vendas</span>
+                        Domingo
+                    </div>
+                </div>
+                <div class="right"></div>
+            </div>
+        </div>
     </main>
 </body>
 </html>
