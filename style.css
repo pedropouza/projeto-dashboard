@@ -170,6 +170,12 @@ svg circle:nth-child(2) {
     gap: 3.2rem;
 }
 
+.weekly-sell .left, .weekly-sell .right {
+    flex: 1;    /* Isso significa que ambos os lados vão tentar ocupar o mesmo espaço que tenham disponível */
+}
+
+
+
 .left .grid {
     gap: .8rem;
     font-weight: 500;
@@ -189,16 +195,62 @@ svg circle:nth-child(2) {
     width: 15px;
     height: 15px;
     display: block;
-    clip-path: polygon(50% 0%, 0% 80%, 100% 80%);
+    clip-path: polygon(50% 0%, 0% 80%, 100% 80%);   /* Criou o "triangulozinho" */
 }
 
 .left .most-sell span::before {
-    background: linear-gradient(180deg, #81FBB8 0%, #28C76F 100%);
+    background: linear-gradient(180deg, #81FBB8 0%, #28C76F 100%);  /* cor verde (mais vendas) */
     margin-top: 0.2rem;
 }
 
 .left .less-sell span::before {
-    background: linear-gradient(180deg, #EA5455 0%, #FEB692 100%);
-    transform: matrix(1, 0, 0, -1, 0, 0);
+    background: linear-gradient(180deg, #EA5455 0%, #FEB692 100%);  /* cor vermelha (menos vendas) */
+    transform: matrix(1, 0, 0, -1, 0, 0);   /* Matrix para inverter o triangulo para baixo */
     margin-bottom: 0.3rem;
+}
+
+.bars {
+    display: flex;
+    gap: 5.9rem;    /* Espaço entre os elementos (entre as barras) */
+    align-items: flex-end;
+    position: relative;
+}
+
+.bars::before {     /* Criando o tracinho do meio */
+    content: "";
+    display: block;
+    position: absolute;
+    height: 0.3rem;
+    width: 100%;
+    background-color: #4A4556;
+    border-radius: 999px;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 0;     /* Para ficar atras das barras */
+}
+
+.bar-wrapper {
+    display: grid;
+    justify-items: center;
+    gap: .5rem;
+    z-index: 1;     /* Para as barras ficarem na frente do traço do meio */
+    /* Definindo um espaço para as barras, pois quando coloca a animação up, não está conforme planejado */
+    /* Estão em 2 rows, então se define o tamanho das 2 */
+    grid-template-rows: 15.9rem 1.6rem;     /* 15.9 é a barrinha com maior altura (para ficar bem definido) / 1.6 é a altura do texto de 16px */
+    /* Mas, assim está vindo de cima para baixo, então falta configurar o .bar para se alinha para o final */
+}
+
+.bar {
+    width: 1.5rem;
+    background: linear-gradient(180deg, #90F7EC 0%, #32CCBC 100%);
+    border-radius: 999px;   /* Se usasse 50% não ficaria com as bordas arredondadas, pois o objeto não é circular */
+    height: var(--height);
+    animation: up 1s;
+    align-self: end;    /* Para alinhar as barrinhas que estavam emcima, para baixo. E como é Grid, é somente End e não Flex-End */
+}
+
+@keyframes up {
+    0% {
+        height: 0;
+    }
 }
